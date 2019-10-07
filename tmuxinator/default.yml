@@ -1,0 +1,51 @@
+# ~/.tmuxinator/default.yml
+
+name: default
+root: ~/Work
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t default
+
+windows:
+  - servers:
+      layout: 0331,204x44,0,0[204x22,0,0{102x22,0,0,9,101x22,103,0,12},204x21,0,23{102x21,0,23,10,101x21,103,23,11}]
+      panes:
+        - api:
+          - cd $HOME/Work/ccs-api
+          - passenger start -p 3002
+        - client:
+          - cd $HOME/Work/ccs-client
+          - rails s -p 3003 -b 0.0.0.0
+        - directory:
+          - cd $HOME/Work/directory
+          - passenger start -p 3001
+        - sso:
+          - cd $HOME/Work/sso
+          - passenger start -p 3000
+  - vim: vim
+  - console: sl
+

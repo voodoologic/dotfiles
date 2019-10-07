@@ -1,0 +1,29 @@
+name: work
+root: ~/Work
+windows:
+  - daemon:
+      layout: 2843,253x58,0,0[253x29,0,0,0,253x28,0,30{127x28,0,30,4,125x28,128,30,8}]]
+      pre_window:
+        - sudo sl
+      panes:
+        - iftop -i en5
+        - slurm -i en5
+        - glances
+  - meta:
+      layout: 8077,258x57,0,0{129x57,0,0[129x28,0,0,1,129x28,0,29,11],128x57,130,0,10}
+      panes:
+        - tabbook: tb
+        - tabbook_man: tb -h
+        - hacker_news: hn
+  - servers:
+      layout: 0331,204x44,0,0[204x22,0,0{102x22,0,0,9,101x22,103,0,12},204x21,0,23{102x21,0,23,10,101x21,103,23,11}]
+      root: ~/Work/
+      pre_window:
+        - ctags -R ./
+      panes:
+        - server: echo 'server'| figlet | lolcat 2>/dev/null
+        - console: echo 'console' | figlet | lolcat 2>/dev/null
+        - guard: echo 'guard' | figlet | lolcat 2>/dev/null
+        - extra: echo 'extra' | figlet | lolcat 2>/dev/null
+  - vim: vim
+  - terminal: echo `date` | cowsay -f bong | lolcat 2>/dev/null

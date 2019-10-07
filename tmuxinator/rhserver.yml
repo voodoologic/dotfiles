@@ -1,0 +1,11 @@
+name: rhserver
+root: ~/Work
+windows:
+  - ngrok:
+      layout: 90f4,200x55,0,0{130x55,0,0,1,69x55,131,0[69x27,131,0,2,69x27,131,28,3]}
+      panes:
+        - utility: 
+        - autossh: autossh -M 20000 -R 6666:localhost:22 relay
+        - time:
+          - cd ~/Work/cred_service
+          - ruby keep_alive.rb
