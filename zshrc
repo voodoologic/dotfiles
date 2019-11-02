@@ -97,4 +97,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash_aliases
+if [ -f $HOME/ok-bash/ok.sh ]
+then
+  cd
+  . $HOME/ok-bash/ok.sh
+fi
 alias -g 'serveralias=serveralias -t zsh'
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
