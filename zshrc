@@ -64,6 +64,7 @@ ZSH_THEME="junkfood"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  themes
 )
 
 source $ZSH/oh-my-zsh.sh
