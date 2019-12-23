@@ -9,6 +9,7 @@ alias work='cd ~/Work'
 alias sande='cd ~/Sandbox/ember-hatorade'
 alias sandr='cd ~/Sandbox/rails-hatorade'
 alias sandd='cd ~/Sandbox/docker-hatorade'
+alias akam='cd ~/Sandbox/akamadoshi'
 alias owd='cd $OLDPWD'
 #utilities
 alias ll='ls -lah'
