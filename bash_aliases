@@ -1,10 +1,12 @@
-alias hate='cd ~/Sandbox/docker-hatorade'
+alias hate='cd ~/Sandbox/hatorade'
+alias daemon='cd ~/Work/docker-hatorade/daemon-hatorade'
 alias sand='cd ~/Sandbox'
 alias tools='cd ~/Tools'
 alias hack='cd ~/Hack'
 alias movies='cd ~/Movies'
 alias videos='cd ~/Videos'
 alias work='cd ~/Work'
+alias wine64='wine64-development'
 #hatorade
 alias sande='cd ~/Sandbox/ember-hatorade'
 alias sandr='cd ~/Sandbox/rails-hatorade'
