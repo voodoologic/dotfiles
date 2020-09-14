@@ -85,12 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -114,7 +109,7 @@ fi
 if [ -f $HOME/ok-bash/ok.sh ]
 then
   cd $HOME/ok-bash
-  . ./ok.sh
+  . ./ok.sh 1>/dev/null
   cd $HOME
 fi
 
