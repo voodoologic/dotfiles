@@ -21,3 +21,6 @@ Thumbs.db
 Desktop.ini
 #rvm
 .rvmrc
+#bash-ok
+.ok
+tmux/plugins/*

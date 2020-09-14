@@ -1,4 +1,3 @@
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -74,6 +73,7 @@ ZSH_THEME="xiong-chiamiov"
 plugins=(
   git
   themes
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,12 +106,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]
+then
+  source ~/.bash_aliases
+fi
+
 if [ -f $HOME/ok-bash/ok.sh ]
 then
   cd $HOME/ok-bash
-  . ./ok.sh 1>/dev/null
+  . ./ok.sh
   cd $HOME
 fi
+
 alias -g 'serveralias=serveralias -t zsh'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+which direnv 1>/dev/null && eval "$(direnv hook zsh)"
+which opam 1>/dev/null && eval "$(opam env)"
