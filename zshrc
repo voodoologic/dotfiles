@@ -118,3 +118,6 @@ alias -g 'serveralias=serveralias -t zsh'
 
 which direnv 1>/dev/null && eval "$(direnv hook zsh)"
 which opam 1>/dev/null && eval "$(opam env)"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
