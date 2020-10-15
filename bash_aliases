@@ -10,11 +10,13 @@ alias train='cd ~/Training'
 alias down="cd ~/Downloads"
 alias wine64='wine64-development'
 alias owd='cd $OLDPWD'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 #work
-alias go160='cd ~/go-code/src/code.uber.internal/e2eclass/go160'
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias g-c='cd $HOME/go-code'
+if [ -f $HOME/.work_aliases ]
+then
+  source $HOME/.work_aliases
+fi
 
 #hatorade
 alias sande='cd ~/Sandbox/ember-hatorade'

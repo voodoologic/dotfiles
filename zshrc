@@ -74,10 +74,15 @@ plugins=(
   git
   themes
   fzf
+  globalias
 )
 
 source $ZSH/oh-my-zsh.sh
 
+GLOBALIAS_FILTER_VALUES=(
+  l
+  grep
+)
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,21 +108,22 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ -f $HOME/.bash_aliases ]
 then
-  source ~/.bash_aliases
+  source $HOME/.bash_aliases
 fi
 
-if [ -f $HOME/ok-bash/ok.sh ]
+if [ -f $HOME/.ripgreprc ]
 then
-  cd $HOME/ok-bash
-  . ./ok.sh 1>/dev/null
-  cd $HOME
+  export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 fi
 
-alias -g 'serveralias=serveralias -t zsh'
+# if [ -f $HOME/ok-bash/ok.sh ]
+# then
+#   . $HOME/ok-bash/ok.sh verbose
+# fi
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 which direnv 1>/dev/null && eval "$(direnv hook zsh)"
 which opam 1>/dev/null && eval "$(opam env)"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

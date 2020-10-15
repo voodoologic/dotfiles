@@ -1,7 +1,2 @@
-# vpn into home network
-sudo openvpn --tls-version-min 1.0 --config ~/Documents/clientconfig.ovpn --auth-user-pass .secrets &
-# backup the system to s3
-restic -r s3:https://s3.us-west-1.wasabisys.com/doug.backups/foundation/$(hostname).foundation/$(whoami) --exclude-file restic_excludes.txt --verbose backup ~
-# system update
-sudo apt update && sudo apt full-upgrade -y && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean
-
+# test
+update-uber-home.sh

@@ -1,6 +1,6 @@
 [user]
-	name = Doug
-	email = dougheadley@pm.me
+	name = Doug Headley
+	email = github@d.passiveobserver.com
 [github]
   user = voodoologic
 [push]
@@ -8,7 +8,7 @@
 [pull]
   default = matching
 [core]
-  excludesfile = $HOME/.gitignore
+	excludesfile = .gitignore
   editor = vim
   hideDotFiles = false
   askpass = git-gui--askpass
@@ -71,7 +71,6 @@
   merge = refs/heads/develop
 [difftool "opendiff`"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
 [mergetool "opendiff"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
@@ -85,15 +84,9 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
-[url "ssh://code.uber.internal/"]
-	insteadOf = https://code.uber.internal/
-[url "ssh://config.uber.internal/"]
-	insteadOf = https://config.uber.internal/
-[credential "https://git.uberinternal.com"]
-	helper = usso
-[credential "https://vfs4g-cache.uberinternal.com"]
-	helper = usso
-[http "https://gopkg.uberinternal.com"]
-	followRedirects = true
-[http "https://gopkg.in"]
-	followRedirects = true
+[branch]
+  autosetuprebase = always
+[rerere]
+  enabled = true
+[include]
+  path = .gitwork
