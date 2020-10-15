@@ -106,7 +106,7 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f $HOME/.bash_aliases n
+if [ -f $HOME/.bash_aliases ]
 then
   source $HOME/.bash_aliases
 fi
