@@ -75,13 +75,20 @@ plugins=(
   themes
   fzf
   globalias
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
 
 GLOBALIAS_FILTER_VALUES=(
+  ls
   l
   grep
+  vi
+  gst
+  tmux
+  mux
+  z
 )
 # User configuration
 
@@ -120,10 +127,22 @@ fi
 # then
 #   . $HOME/ok-bash/ok.sh verbose
 # fi
+eval "$(lua $HOME/Tools/z.lua/z.lua --init zsh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+#direnv
 which direnv 1>/dev/null && eval "$(direnv hook zsh)"
+
+#ocaml idl 
 which opam 1>/dev/null && eval "$(opam env)"
+
+#nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+#nnn
+export NNN_FIFO=/tmp/nnn.fifo
+
+#z.lua
+export _ZL_MATCH_MODE=1
