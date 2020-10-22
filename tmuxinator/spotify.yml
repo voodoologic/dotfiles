@@ -1,0 +1,9 @@
+# ~/.tmuxinator/default.yml
+
+name: spotify
+root: ~/
+pre_window: spotifyd
+windows:
+  - controller:
+    - spt
+

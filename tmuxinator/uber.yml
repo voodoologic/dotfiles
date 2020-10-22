@@ -1,35 +1,25 @@
 ---
 name: uber
-project_root: "/Users/dheadl/go-code"
+pre_window: <%= @settings['project_root'] = @settings['project'] || @args[0] || 'phatness' %>
+root: <%= `fd #{@settings['project_root']} ~/go-code/src/code.uber.internal/engsec/ | head -1` %>
 windows:
-- gotop:
-    layout: ad3d,172x40,0,0,0
-    panes:
-    - gotop
-- bazel:
-    layout: b5e5,172x40,0,0[172x19,0,0,1,172x20,0,20,11]
-    panes:
-    - cd /Users/dheadl/go-code/src/code.uber.internal/engsec/appsec/phatness
-    - cd /Users/dheadl/go-code/src/code.uber.internal/engsec/appsec/phatness
-- Vim:
-    layout: 682d,172x40,0,0[172x20,0,0,9,172x19,0,21,20]
-    panes:
-    - cd /Users/dheadl/go-code
-    - cd /Users/dheadl
-- Cerberus:
-    layout: 35eb,172x40,0,0[172x19,0,0,4,172x20,0,20,16]
-    panes:
-    - cd /Users/dheadl/dotfiles
-    - cd /Users/dheadl
-- zsh:
-    layout: 56d1,172x40,0,0,12
-    panes:
-    - cd /Users/dheadl/dotfiles
-    - cd /Users/dheadl/dotfiles
-    - cd /Users/dheadl
-- zsh:
-    layout: b5ed,172x40,0,0[172x19,0,0,8,172x20,0,20,13]
-    panes:
-    - cd /Users/dheadl/dotfiles
-    - cd /Users/dheadl/dotfiles
-    - cd /Users/dheadl
+  - vim:
+      panes:
+        - vi
+  - bazel:
+      layout: 9481,116x53,0,0[116x26,0,0,28,116x26,0,27,29]
+      panes:
+        - bazel:
+          - ibazel build <%= @settings['project_root'].sub(ENV['GOPATH'], '/') %>
+        - bazel:
+          - bazel run .
+  - cerberus:
+      layout: 9481,116x53,0,0[116x26,0,0,28,116x26,0,27,29]
+      panes:
+        - cerberus:
+          - cerberus
+        - cerberus:
+          - pgrep cerberus || watch --no-title -g 'pgrep cerberus' && cerberus stat
+  - zsh:
+      layout: 5e11,116x53,0,0,31
+
