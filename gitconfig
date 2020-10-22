@@ -12,6 +12,7 @@
   editor = vim
   hideDotFiles = false
   askpass = git-gui--askpass
+	attributesfile = /Users/dheadl/.gitattributes
 [color]
   branch = auto
   diff = auto
@@ -89,4 +90,4 @@
 [rerere]
   enabled = true
 [include]
-  path = .gitwork
+  path = ~/.gitwork
