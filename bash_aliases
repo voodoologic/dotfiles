@@ -28,6 +28,7 @@ alias espn='cd ~/Sandbox/espn'
 #utilities
 alias vi='vim'
 alias ll='ls -lah'
+alias l='exa -l -T -L 2 --header --git-ignore -F -d -I node_modules'
 alias ugh='pushd ./ && cd && popd'
 alias h='history'
 alias tmux='tmux -2'

@@ -75,7 +75,6 @@ plugins=(
   themes
   fzf
   globalias
-  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -88,7 +87,6 @@ GLOBALIAS_FILTER_VALUES=(
   gst
   tmux
   mux
-  z
 )
 # User configuration
 
@@ -127,7 +125,10 @@ fi
 # then
 #   . $HOME/ok-bash/ok.sh verbose
 # fi
-eval "$(lua $HOME/Tools/z.lua/z.lua --init zsh)"
+if which zoxide > /dev/null 2>&1;
+then
+  eval "$(zoxide init zsh)"
+fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -142,7 +143,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 #nnn
+export NNN_OPENER=nuke
 export NNN_FIFO=/tmp/nnn.fifo
+export NNN_PLUG='p:preview-tui'
+export NNN_BMS='p:~/.config/nnn/plugins;P:~/go-code/src/code.uber.internal/engsec/appsec/phatness'
+# HSTR configuration - add this to ~/.zshrc
+alias hh=hstr                    # hh to be alias for hstr
+setopt histignorespace           # skip cmds w/ leading space from history
+export HSTR_CONFIG=hicolor       # get more colors
+bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
-#z.lua
-export _ZL_MATCH_MODE=1
