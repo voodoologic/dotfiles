@@ -3,7 +3,10 @@
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 
-export PATH="$PATH:$NPM_PACKAGES/bin:$HOME/.emacs.d/bin"
+export PATH="$HOME/local/bin:$PATH:$NPM_PACKAGES/bin:$HOME/.emacs.d/bin"
+
+#golang
+export GOBIN="$HOME/local/bin"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
@@ -87,6 +90,8 @@ GLOBALIAS_FILTER_VALUES=(
   gst
   tmux
   mux
+  z
+  zq
 )
 # User configuration
 
@@ -142,11 +147,27 @@ which opam 1>/dev/null && eval "$(opam env)"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+#yq completion
+# yq shell-completion --variation=zsh
+
+#thefuck
+if which thefuck > /dev/null 2>&1;
+then
+  eval $(thefuck --alias)
+fi
+
 #nnn
 export NNN_OPENER=nuke
 export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='p:preview-tui'
-export NNN_BMS='p:~/.config/nnn/plugins;P:~/go-code/src/code.uber.internal/engsec/appsec/phatness'
+NNN_PLUG_PERSONAL='g:personal/preview-tabbed'
+NNN_PLUG_WORK='j:uber/prettyjson;d:uber/pwd'
+NNN_PLUG_INLINE='e:_go run $nnn*'
+NNN_PLUG_DEFAULT='1:bookmarks;2:ipinfo;p:preview-tui;o:fzz;b:nbak'
+NNN_PLUG="$NNN_PLUG_PERSONAL;$NNN_PLUG_WORK;$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
+export NNN_PLUG
+NNN_GO_DASH_CODE_BMS='P:~/go-code/src/code.uber.internal/engsec/appsec/phatness'
+NNN_GOCODE_BMS='s:~/gocode/src/code.uber.internal/gonduit_spike'
+export NNN_BMS="$NNN_GOCODE_BMS;$NNN_GO_DASH_CODE_BMS"
 # HSTR configuration - add this to ~/.zshrc
 alias hh=hstr                    # hh to be alias for hstr
 setopt histignorespace           # skip cmds w/ leading space from history

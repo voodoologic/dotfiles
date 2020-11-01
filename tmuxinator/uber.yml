@@ -1,6 +1,6 @@
 ---
 name: uber
-pre_window: <%= @settings['project_root'] = @settings['project'] || @args[0] || 'phatness' %>
+on_project_start: ussh && sl; <%= @settings['project_root'] = @settings['project'] || @args[0] || 'phatness' %>
 root: <%= `fd #{@settings['project_root']} ~/go-code/src/code.uber.internal/engsec/ | head -1` %>
 windows:
   - vim:
@@ -20,6 +20,8 @@ windows:
           - cerberus
         - cerberus:
           - pgrep cerberus || watch --no-title -g 'pgrep cerberus' && cerberus stat
+  - nnn:
+    panes:
+      - nnn
   - zsh:
-      layout: 5e11,116x53,0,0,31
-
+    panes:
