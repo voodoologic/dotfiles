@@ -37,13 +37,14 @@
   untracked = yellow
 [alias]
   aliases = config --global --get-regexp alias.*
-  bs = bisect
-  br = branch
-  ci = commit -am
+  bs  = bisect
+  br  = branch
+  gma = commit -am
+  wip = for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
   msg = commit --allow-empty -m
-  co = checkout
-  cp = cherry-pick
-  df = diff
+  co  = checkout
+  cp  = cherry-pick
+  df  = diff
   diffindex = diff-index -p -M -b -w --color HEAD
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   slog = log --pretty=format:'%h - %an, %ar : %s'

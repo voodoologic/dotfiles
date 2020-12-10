@@ -3,7 +3,7 @@
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 
-export PATH="$HOME/local/bin:$PATH:$NPM_PACKAGES/bin:$HOME/.emacs.d/bin"
+export PATH="$HOME/.rbenv/bin:$HOME/local/bin:$NPM_PACKAGES/bin:$HOME/.emacs.d/bin:$PATH"
 
 #golang
 export GOBIN="$HOME/local/bin"
@@ -38,7 +38,7 @@ ZSH_THEME="xiong-chiamiov"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -92,6 +92,10 @@ GLOBALIAS_FILTER_VALUES=(
   mux
   z
   zq
+  wimg
+  wnpm
+  wyarn
+  cat
 )
 # User configuration
 
@@ -119,6 +123,11 @@ export EDITOR='vim'
 if [ -f $HOME/.bash_aliases ]
 then
   source $HOME/.bash_aliases
+fi
+
+if [ -f $HOME/Tools/scripts.sh ]
+then
+   source $HOME/Tools/scripts.sh
 fi
 
 if [ -f $HOME/.ripgreprc ]
@@ -156,17 +165,21 @@ then
   eval $(thefuck --alias)
 fi
 
+if which rbenv > /dev/null 2>&1;
+then
+  eval "$(rbenv init -)"
+fi
 #nnn
 export NNN_OPENER=nuke
 export NNN_FIFO=/tmp/nnn.fifo
-NNN_PLUG_PERSONAL='g:personal/preview-tabbed'
-NNN_PLUG_WORK='j:uber/prettyjson;d:uber/pwd'
+NNN_PLUG_PERSONAL='g:personal/preview-tabbed;s:personal/halfsize.sh'
+NNN_PLUG_WORK='j:uber/prettyjson;d:uber/pwd;v:uber/jsonValid.sh'
 NNN_PLUG_INLINE='e:_go run $nnn*'
-NNN_PLUG_DEFAULT='1:bookmarks;2:ipinfo;p:preview-tui;o:fzz;b:nbak'
+NNN_PLUG_DEFAULT='1:bookmarks;2:ipinfo;p:preview-tui;a:autojump;b:nbak'
 NNN_PLUG="$NNN_PLUG_PERSONAL;$NNN_PLUG_WORK;$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
 export NNN_PLUG
 NNN_GO_DASH_CODE_BMS='P:~/go-code/src/code.uber.internal/engsec/appsec/phatness'
-NNN_GOCODE_BMS='s:~/gocode/src/code.uber.internal/gonduit_spike'
+NNN_GOCODE_BMS='s:~/gocode/src/code.uber.internal/gonduitToolbox'
 export NNN_BMS="$NNN_GOCODE_BMS;$NNN_GO_DASH_CODE_BMS"
 # HSTR configuration - add this to ~/.zshrc
 alias hh=hstr                    # hh to be alias for hstr

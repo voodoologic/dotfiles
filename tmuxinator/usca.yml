@@ -1,0 +1,32 @@
+---
+name: usca
+on_project_start: ussh && sl | lolcat; pinata-ssh-forward ;<%= @settings['project_root'] = @settings['project'] || @args[0] || 'web/ambassador' %>
+root: ~/Work/usca_runbook
+windows:
+  - vim:
+      panes:
+        - vi
+  - bazel:
+      layout: 0531,216x59,0,0[216x40,0,0{108x40,0,0,1,107x40,109,0,8},216x9,0,41,5,216x8,0,51,7]
+      panes:
+        - bazel:
+          - cd ~/Work/usca_runbook
+        - bazel:
+          - fortune | cowsay -f dragon | lolcat
+        - bazel:
+          - watch docker ps
+        - bazel:
+          - "watch 'docker system df -v | grep -e ^uSCA'"
+
+  - scratchpad:
+      layout: 5c35,216x59,0,0{107x59,0,0,2,108x59,108,0,6}
+      panes:
+        - scratchpad:
+          - watch 'exa -l -T -L 2 --header --git-ignore -F -d -I node_modules /Volumes/Uber/uSCA/repos'
+
+        - scratchpad:
+          - watch 'duc index /Volumes/Uber/uSCA && duc ls /Volumes/Uber/uSCA'
+  - nnn:
+    panes:
+      - nnn
+  - zsh:

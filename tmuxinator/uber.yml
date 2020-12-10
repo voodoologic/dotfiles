@@ -1,7 +1,7 @@
 ---
 name: uber
-on_project_start: ussh && sl; <%= @settings['project_root'] = @settings['project'] || @args[0] || 'phatness' %>
-root: <%= `fd #{@settings['project_root']} ~/go-code/src/code.uber.internal/engsec/ | head -1` %>
+on_project_start: ussh && sl | lolcat; <%= @settings['project_root'] = @settings['project'] || @args[0] || 'phatness' %>
+root: <%= `z ~/go-code/src/code.uber.internal/engsec/ #{@settings['project_root']} ` %>
 windows:
   - vim:
       panes:
@@ -24,4 +24,3 @@ windows:
     panes:
       - nnn
   - zsh:
-    panes:

@@ -8,8 +8,10 @@ alias videos='cd ~/Videos'
 alias work='cd ~/Work'
 alias train='cd ~/Training'
 alias down="cd ~/Downloads"
+alias docs='cd ~/Documents'
 alias wine64='wine64-development'
-alias owd='cd $OLDPWD'
+alias owd='cd $OLDPWD' #just use cd -
+alias duck='duc'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 #work
@@ -61,6 +63,7 @@ alias ga="git add"
 alias gp="git push"
 alias gl="git log"
 alias gm="git commit -m"
+
 alias ..="cd .."
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
