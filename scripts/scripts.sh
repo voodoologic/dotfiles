@@ -2,6 +2,32 @@ dl(){
   docker ps -l --filter "status=running" --format "{{.Names}}"
 }
 
+usca_volume_rm(){
+  docker volume ls --filter=name=uSCA | tr -s ' ' | cut -d ' ' -f 2  | xargs docker volume rm
+}
+
+rename_shit(){
+  find ./ -maxdepth 1 -name 'node*.tar' | sed 'p;s#node_version#usca_node#' | xargs -n2 mv
+}
+
+concat_ssh(){
+  ssh_config=/etc/ssh/ssh_config
+  content="$(ssh_sed)"
+  cat $content >> ~/dougtest
+  cat_cpe
+}
+
+cat_cpe(){
+  concatfile=/etc/ssh/ssh_config_cpe
+  cat $concatfile
+}
+
+ssh_sed(){
+  ssh_config=/etc/ssh/ssh_config
+  concatfile=/etc/ssh/ssh_config_cpe
+  sed -e "s#Include\ $concatfile##" < $ssh_config
+}
+
 db(){
   set -x
   docker exec -ti "$1" bash
@@ -36,6 +62,15 @@ dk(){
   docker kill $1
 }
 
+dkl(){
+  docker kill `dl`
+}
+
+
+kill_audio(){
+  sudo killall coreaudiodo
+}
+
 dra(){
   docker rm $(docker ps -a -q)
 }
@@ -44,7 +79,25 @@ drmi(){
   docker rmi $(docker ps -a -q)
 }
 
+today(){
+  date +'%y-%m-%d'
+}
+
+crop_daily(){
+  qpdf "$HOME/Downloads/$(today).pdf" --pages . 1 -- "$HOME/Downloads/daily_journal_$(today).pdf"
+}
+
+to_l4(){
+  mv $1 ~/Documents/Syncthing/layer4/Documents/
+}
+
+export_daily(){
+  crop_daily
+  to_l4 "$HOME/Downloads/daily_journal_$(today).pdf"
+}
+
 neat(){
+  #only to bookmark .sub_ext
   converted_filename=$(ruby -rpathname -e "puts Pathname.new('$1').sub_ext('.mp4')")
   echo $converted_filename
 }
@@ -112,6 +165,12 @@ stars(){
   convert -delay 10 stars/*.png stars.gif
 }
 
+helloip(){ (ifdata -e wlan0 && ifdata -pa wlan0) || (ifdata -e en0 && ifdata -pa en0) }
+
+tls_test(){ 
+  ruby -e "require 'net/http'; require 'json'; puts JSON.parse(Net::HTTP.get(URI('https://www.howsmyssl.com/a/check')))['tls_version']"
+}
+
 test_parse(){
   ruby -ryarnlock -e "Yarnlock.parse('shit.json')"
 }
@@ -124,7 +183,22 @@ myknitter(){
   ruby -rknitter -rpry -e "k = Knitter::Yarn.new('./'); binding.pry; puts 'done'"
 }
 
-usca(){
-  runbook exec --auto --start-at=1.1 runbooks/bl_upgrade.rb
+mkenv(){
+  direnv dump > .envrc.cache
 }
 
+usca(){
+  #better done with rake
+  runbook exec --auto --start-at=1.1 runbooks/snyk_upgrade.rb
+}
+
+
+devent(){
+  ruby -rdocker-api -e "Docker::Event.stream{|event| puts event}"
+}
+
+notes(){
+  "PHID-PROJ-7r2xs43jx6nu3lxukzvy" - unkown fix
+  "PHID-PROJ-g4y2xm5clgbufvckccgq" - edge repo scans
+  "PHID-PROJ-wh7trolyvtw4j7zxppdn" - known fix
+}

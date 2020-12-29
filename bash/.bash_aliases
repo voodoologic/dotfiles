@@ -26,6 +26,7 @@ alias sandr='cd ~/Sandbox/rails-hatorade'
 alias sandd='cd ~/Sandbox/docker-hatorade'
 alias akam='cd ~/Sandbox/akamadoshi'
 alias espn='cd ~/Sandbox/espn'
+alias tp='cd ~/Tools/pomodoro'
 
 #utilities
 alias vi='vim'

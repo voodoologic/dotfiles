@@ -6,26 +6,24 @@ windows:
   - vim:
       panes:
         - vi
-  - bazel:
-      layout: 0531,216x59,0,0[216x40,0,0{108x40,0,0,1,107x40,109,0,8},216x9,0,41,5,216x8,0,51,7]
+  - home:
+      layout: d029,230x56,0,0[230x39,0,0{115x39,0,0,4,114x39,116,0,8},230x16,0,40,9]
       panes:
-        - bazel:
+        - home:
           - cd ~/Work/usca_runbook
-        - bazel:
+        - home:
           - fortune | cowsay -f dragon | lolcat
-        - bazel:
-          - watch docker ps
-        - bazel:
-          - "watch 'docker system df -v | grep -e ^uSCA'"
+        - home:
+          - watch -n5 docker ps
 
   - scratchpad:
       layout: 5c35,216x59,0,0{107x59,0,0,2,108x59,108,0,6}
       panes:
         - scratchpad:
-          - watch 'exa -l -T -L 2 --header --git-ignore -F -d -I node_modules /Volumes/Uber/uSCA/repos'
+          - watch -n 15 'exa -l -T -L 2 --header --git-ignore -F -d -I node_modules /Volumes/Uber/uSCA/repos'
 
         - scratchpad:
-          - watch 'duc index /Volumes/Uber/uSCA && duc ls /Volumes/Uber/uSCA'
+          - pwd
   - nnn:
     panes:
       - nnn
