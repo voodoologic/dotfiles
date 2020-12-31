@@ -1,2 +1,2 @@
 #!/bin/zsh
-stow {git,misc,tmux,zsh}
+stow --dotfiles {git,misc,tmux,zsh}
