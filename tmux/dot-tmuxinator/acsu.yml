@@ -1,7 +1,23 @@
-<%= puts path %>
+# <%= puts @settings['project_root'] = Pathname.new(`pwd`) %>
 
-name: <%= name %>
+---
+name: acsu
 root: ~/
+windows:
+  - <%= @settings['project_root'].parent +  @settings['project_root'].children.first.basename %>:
+      layout: b7ed,236x59,0,0[236x49,0,0{118x49,0,0,9,117x49,119,0,11},236x9,0,50,10]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - editor:
+          - usca projects
+        - editor:
+          - usca ruby
+        - editor:
+          - usca dropin
+        - editor:
+          - watch -n5 docker ps
 
 # Optional tmux socket
 # socket_name: foo
@@ -44,14 +60,3 @@ root: ~/
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-windows:
-  - editor:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log

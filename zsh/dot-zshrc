@@ -125,9 +125,9 @@ then
   source $HOME/.bash_aliases
 fi
 
-if [ -f $HOME/Tools/scripts.sh ]
+if [ -f $HOME/scripts.sh ]
 then
-   source $HOME/Tools/scripts.sh
+   source $HOME/scripts.sh
 fi
 
 if [ -f $HOME/.ripgreprc ]

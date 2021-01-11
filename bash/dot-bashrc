@@ -132,3 +132,4 @@ if type brew 2&>/dev/null; then
   done
 fi
 
+[ -r /Users/dheadl/.profile_lda ] && . /Users/dheadl/.profile_lda

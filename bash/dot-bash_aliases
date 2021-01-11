@@ -12,6 +12,7 @@ alias docs='cd ~/Documents'
 alias wine64='wine64-development'
 alias owd='cd $OLDPWD' #just use cd -
 alias duck='duc'
+alias stow='stow --dotfiles'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 #work

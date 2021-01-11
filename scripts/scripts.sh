@@ -111,16 +111,23 @@ load_js_env(){
   load_node && load_yarn && load_npm
 }
 
+which_node(){jq .engines.node package.json | tr -d '"'}
+
 load_node(){
-  nvm use "$(jq .engines.node package.json | tr -d '"')"
+  nvm use "$( which_node )"
 }
+
+which_npm(){ jq .engines.npm package.json | tr -d '"'}
 
 load_npm(){
-  yarn global add npm@"$(jq .engines.npm package.json | tr -d '"')"
+  yarn global add npm@"$(which_npm)"
 }
 
+which_yarn(){jq .engines.yarn package.json | tr -d '"'}
+
 load_yarn(){
-  npm install yarn@"$(jq .engines.yarn package.json | tr -d '"')"
+  npm install yarn@"$(which_yarn)"
+  yarn set version "$(which_yarn)"
 }
 
 yarn_latest(){
@@ -187,11 +194,41 @@ mkenv(){
   direnv dump > .envrc.cache
 }
 
-usca(){
-  #better done with rake
-  runbook exec --auto --start-at=1.1 runbooks/snyk_upgrade.rb
+provision_container(){
+  ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.name" $directory
 }
 
+container_runner(){
+  ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.$1" $directory $2
+}
+usca(){
+  #better done with rake
+  # runbook exec --auto --start-at=1.1 runbooks/snyk_upgrade.rb
+  directory="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )"; pwd )"
+  case $1 in
+    dropin)
+      echo "building a docker container based on $directory"
+      container="$(provision_container)"
+      sleep 4
+      echo $container
+      docker exec -it $container bash
+      ;;
+    root)
+      echo "building a docker container based on $directory"
+      container="$(provision_container)"
+      sleep 4
+      echo $container
+      docker exec -it -u root $container bash
+      ;;
+    *)
+      ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.$1" $directory $2
+      ;;
+  esac
+}
+
+lol(){
+  seq 200 600 | shuf | xargs -I{} rake 'echo {} > index.txt && runbook:by_index[{}]' ; ~/Tools/pomodoro/5_min_break.pomodoro
+}
 
 devent(){
   ruby -rdocker-api -e "Docker::Event.stream{|event| puts event}"
