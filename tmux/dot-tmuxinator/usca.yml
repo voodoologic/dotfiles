@@ -20,7 +20,7 @@ windows:
       layout: 5c35,216x59,0,0{107x59,0,0,2,108x59,108,0,6}
       panes:
         - scratchpad:
-          - watch -n 15 'exa -l -T -L 2 --header --git-ignore -F -d -I node_modules /Volumes/Uber/uSCA/repos'
+          - watch -n 15 'exa -l -T -L 2 --header --git-ignore -F -d -I node_modules /Volumes/NFSj/uSCA/repos'
 
         - scratchpad:
           - pwd

@@ -55,7 +55,7 @@ ds(){
 }
 
 dka(){
-  docker rm -f $(docker ps -a -q)
+  docker kill $(docker ps -a -q)
 }
 
 dk(){
@@ -119,6 +119,10 @@ load_node(){
 
 which_npm(){ jq .engines.npm package.json | tr -d '"'}
 
+es_yarn(){
+  #eat shit yarn
+  yarn install --non-interactive --ignore-engines --link-duplicates
+}
 load_npm(){
   yarn global add npm@"$(which_npm)"
 }
@@ -126,12 +130,30 @@ load_npm(){
 which_yarn(){jq .engines.yarn package.json | tr -d '"'}
 
 load_yarn(){
-  npm install yarn@"$(which_yarn)"
+  npmo install yarn@"$(which_yarn) -g"
   yarn set version "$(which_yarn)"
 }
 
 yarn_latest(){
-  yarn global add npm@1.22.10
+  npm install yarn@1.22.10 -g
+}
+
+eat_shit(){
+  git stash -u
+  git stash drop
+  load_node
+  load_yarn
+  yarn install
+  yarn test
+}
+
+es_arc(){
+  arc diff --allow-untracked --nolint #--uncommitted #--never-apply-patches
+}
+
+yarn_scripts(){ jq .scripts package.json }
+git_hell(){
+  git restore --source=HEAD :/
 }
 
 engines(){
@@ -211,14 +233,32 @@ usca(){
       container="$(provision_container)"
       sleep 4
       echo $container
+      docker unpause $container
       docker exec -it $container bash
+      ;;
+    yarn_manager)
+      ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.yarn_manager" $directory $2
+      ;;
+    ym)
+      ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.yarn_manager" $directory $2
+      ;;
+    unpause)
+      docker unpause $container
       ;;
     root)
       echo "building a docker container based on $directory"
       container="$(provision_container)"
       sleep 4
       echo $container
+      docker unpause $container
       docker exec -it -u root $container bash
+      ;;
+    dashboard)
+      tmux kill-session -t acsu > /dev/null 2>&1
+      mux acsu
+      ;;
+    run)
+      ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.run" $directory $2
       ;;
     *)
       ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.$1" $directory $2

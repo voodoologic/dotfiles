@@ -13,6 +13,7 @@
   hideDotFiles = false
   askpass = git-gui--askpass
 	attributesfile = /Users/dheadl/.gitattributes
+	preloadIndex = true
 [color]
   branch = auto
   diff = auto

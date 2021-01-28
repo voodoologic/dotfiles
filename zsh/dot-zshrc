@@ -76,6 +76,7 @@ export UPDATE_ZSH_DAYS=7
 plugins=(
   git
   themes
+  nvm
   fzf
   globalias
 )

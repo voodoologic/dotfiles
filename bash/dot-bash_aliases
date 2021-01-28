@@ -14,6 +14,7 @@ alias owd='cd $OLDPWD' #just use cd -
 alias duck='duc'
 alias stow='stow --dotfiles'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias npmo="npm --cache-min 9999999 "
 
 #work
 if [ -f $HOME/.work_aliases ]

@@ -1,24 +1,36 @@
-# <%= puts @settings['project_root'] = Pathname.new(`pwd`) %>
+# <% require 'pry'; %>
+# <% require 'pathname' %>
+# <% @settings['project_root'] = Pathname.new(`pwd`) %>
+# <% puts @settings['window_name'] =  @settings['project_root'].relative_path_from(@settings['project_root'].parent.parent).to_s%>
 
 ---
 name: acsu
-root: ~/
+root: <%= @settings['project_root'] %>
+on_project_start: cd <%= @settings['project_root'] %>
+on_project_first_start: echo 'making sure a container is build' ; usca create
+startup_window: acsu
+startup_pane: 3
 windows:
-  - <%= @settings['project_root'].parent +  @settings['project_root'].children.first.basename %>:
-      layout: b7ed,236x59,0,0[236x49,0,0{118x49,0,0,9,117x49,119,0,11},236x9,0,50,10]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
+  - vim:
       panes:
-        - editor:
-          - usca projects
-        - editor:
+        - vim -S ~/.vim/sessions/acsu.vim
+  - acsu:
+      layout: b391,187x50,0,0[187x35,0,0{93x35,0,0[93x17,0,0,7,93x17,0,18,11],93x35,94,0,10},187x14,0,36,9]
+      panes:
+        - acsu:
+          - CONSOLE=true usca projects
+        - acsu:
+          - usca open_tickets
           - usca ruby
-        - editor:
+        - acsu:
           - usca dropin
-        - editor:
+        - acsu:
           - watch -n5 docker ps
 
+# Synchronize all panes of this window, can be enabled before or after the pane commands run.
+# 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+# synchronize: after
+#
 # Optional tmux socket
 # socket_name: foo
 
