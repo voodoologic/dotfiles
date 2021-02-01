@@ -117,8 +117,30 @@ load_node(){
   nvm use "$( which_node )"
 }
 
-which_npm(){ jq .engines.npm package.json | tr -d '"'}
+waiton(){
+  pid=$1
+  me="$(basename $0)($$):"
+  if [ -z "$pid" ]
+  then
+      echo "$me a PID is required as an argument" >&2
+      exit 2
+  fi
 
+  name=$(ps -p $pid -o comm=)
+  if [ $? -eq 0 ]
+  then
+      echo "$me waiting for PID $pid to finish ($name)"
+      while ps -p $pid > /dev/null; do sleep 1; done;
+  else
+      echo "$me failed to find process with PID $pid" >&2
+      exit 1
+  fi
+}
+
+which_npm(){ jq .engines.npm package.json | tr -d '"'}
+esy(){
+  yarn --non-interactive --ignore-engines $1
+}
 es_yarn(){
   #eat shit yarn
   yarn install --non-interactive --ignore-engines --link-duplicates
@@ -224,8 +246,6 @@ container_runner(){
   ruby -r"$HOME/Work/usca_runbook/bin/container_maker.rb" -e"ContainerMaker.new.$1" $directory $2
 }
 usca(){
-  #better done with rake
-  # runbook exec --auto --start-at=1.1 runbooks/snyk_upgrade.rb
   directory="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )"; pwd )"
   case $1 in
     dropin)
