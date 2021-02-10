@@ -1,6 +1,6 @@
 [submodule "tmux/plugins/vim-tmux-navigator"]
 	path = tmux/dot-tmux/plugins/vim-tmux-navigator
-	url = https://github.com/tmux-plugins/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
 [submodule "tmux/plugins/tpm"]
 	path = tmux/dot-tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
@@ -12,10 +12,10 @@
 	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule "tmux/plugins/tmux-themepack"]
 	path = tmux/dot-tmux/plugins/tmux-themepack
-	url = https://github.com/tmux-plugins/tmux-themepack
+	url = https://github.com/jimeh/tmux-themepack
 [submodule "tmux/plugins/tmux-fzf"]
 	path = tmux/dot-tmux/plugins/tmux-fzf
-	url = https://github.com/tmux-plugins/tmux-fzf
+	url = https://github.com/sainnhe/tmux-fzf
 [submodule "zsh/dot-oh-my-zsh"]
 	path = zsh/dot-oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
