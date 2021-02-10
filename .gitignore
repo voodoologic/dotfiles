@@ -17,6 +17,7 @@ tmp
 .yardoc
 _yardoc
 doc/
-
+vim/dot-vim/undodir/**
+vim/dot-vim/backup/**
 dotok
 tmux/plugins/*

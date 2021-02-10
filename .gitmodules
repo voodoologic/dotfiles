@@ -1,6 +1,18 @@
+[submodule "tmux/plugins/vim-tmux-navigator"]
+	path = tmux/dot-tmux/plugins/vim-tmux-navigator
+	url = https://github.com/tmux-plugins/vim-tmux-navigator
 [submodule "tmux/plugins/tpm"]
-	path = dottmux/plugins/tpm
+	path = tmux/dot-tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "dot-vim"]
-	path = dot-vim
-	url = git@github.com:voodoologic/dotvim
+[submodule "tmux/plugins/tmux-sidebar"]
+	path = tmux/dot-tmux/plugins/tmux-sidebar
+	url = https://github.com/tmux-plugins/tmux-sidebar
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/dot-tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "tmux/plugins/tmux-themepack"]
+	path = tmux/dot-tmux/plugins/tmux-themepack
+	url = https://github.com/tmux-plugins/tmux-themepack
+[submodule "tmux/plugins/tmux-fzf"]
+	path = tmux/dot-tmux/plugins/tmux-fzf
+	url = https://github.com/tmux-plugins/tmux-fzf

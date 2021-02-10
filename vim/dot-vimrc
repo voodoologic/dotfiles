@@ -1,0 +1,351 @@
+set nocompatible              " be iMproved, required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Go stuff
+Plugin 'sebdah/vim-delve'
+Plugin 'fatih/vim-go'
+" Plugin 'govim/govim' an altrantive written in go
+" Other stuff
+Plugin 'mkitt/tabline.vim' " fancy tabs
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-tbone'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-haml'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'tpope/vim-characterize'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'jparise/vim-phabricator'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'airblade/vim-rooter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'mcchrish/nnn.vim'
+" Plugin 'sjl/gundo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+" plugin 'ivan-cukic/vim-ctrlp-switcher'
+Plugin 'adelarsq/vim-matchit'
+Plugin 'vim-scripts/tComment'
+Plugin 'vim-scripts/Gummybears'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'dracula/vim'
+Plugin 'jnurmine/Zenburn'
+Plugin 'vim-airline/vim-airline'
+Plugin 'joukevandermaas/vim-ember-hbs'
+Plugin 'junegunn/vim-emoji'
+Plugin 'andymass/vim-matchup'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'bufbuild/vim-buf'
+Plugin 'dense-analysis/ale'
+Plugin 'christoomey/vim-tmux-navigator'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" ------------------------------------------------------------------
+" Solarized Colorscheme Config
+"# ------------------------------------------------------------------
+set t_Co=256
+" syntax on
+colorscheme solarized
+let g:solarized_termcolors=256
+" ------------------------------------------------------------------
+"
+" ctrp switer plugin
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_extensions = ['funky']
+
+set undodir=~/.vim/undodir
+set undofile
+set redrawtime=10000
+" go bin path
+if $GO_BIN_PATH != ""
+  let g:go_bin_path=$GO_BIN_PATH
+endif
+
+" Basics {
+"set transparency=15
+set noexrc " don't use local version of .(g)vimrc, .exrc
+set background=dark " we plan to use a dark background
+set cpoptions=aABceFsmq
+"             |||||||||
+"             ||||||||+-- When joining lines, leave the cursor
+"             |||||||      between joined lines
+"             |||||||+-- When a new match is created (showmatch)
+"             ||||||      pause for .5
+"             ||||||+-- Set buffer options when entering the
+"             |||||      buffer
+"             |||||+-- :write command updates current file name
+"             ||||+-- Automatically add <cr> to the last line
+"             |||      when using :@r
+"             |||+-- Searching continues at the end of the match
+"             ||      at the cursor position
+"             ||+-- A backslash has no special meaning in mappings
+"             |+-- :write updates alternative file name
+"             +-- :read updates alternative file name
+set autoread
+" }
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent 
+" General {
+if has("autocmd")
+  filetype plugin indent on " load filetype plugins/indent settings
+  autocmd FileType ruby setlocal foldmethod=syntax
+  autocmd FileType python setlocal foldmethod=syntax
+  autocmd FileType *.scss setlocal foldmethod=syntax
+  autocmd FileType *.haml setlocal foldmethod=syntax
+  autocmd FileType *.ts setlocal foldmethod=syntax
+endif
+" set autochdir " always switch to the current file directory
+set backspace=indent,eol,start " make backspace a more flexible
+set backup " make backup files
+set backupdir=~/.vim/backup " where to put backup files
+" set clipboard+=unnamed " share windows clipboard
+set directory+=,~/tmp, " $TMP ",$TEMP directory to place swap files in
+set fileformats=unix,dos,mac " support all three, in this order
+set hidden " you can change buffers without saving
+set mouse=a " use mouse everywhere
+set noerrorbells " don't make noise
+set whichwrap=b,s,h,l,<,>,~,[,] " everything wraps
+"             | | | | | | | | |
+"             | | | | | | | | +-- "]" Insert and Replace
+"             | | | | | | | +-- "[" Insert and Replace
+"             | | | | | | +-- "~" Normal
+"             | | | | | +-- <Right> Normal and Visual
+"             | | | | +-- <Left> Normal and Visual
+"             | | | +-- "l" Normal and Visual (not recommended)
+"             | | +-- "h" Normal and Visual (not recommended)
+"             | +-- <Space> Normal and Visual
+"             +-- <BS> Normal and Visual
+set wildmenu " turn on command line completion wild style
+" ignore these list file extensions
+set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,
+\*.jpg,*.gif,*.png
+set wildmode=list:longest " turn on wild mode huge list
+" }
+set cursorcolumn " highlight the current column aka crosshairs
+set cursorline " highlight current line aka crosshairs
+set incsearch " BUT do highlight as you type you
+" search
+set laststatus=2 " always show the status line
+set lazyredraw " do not redraw while running macros
+set linespace=0 " don't insert any extra pixel lines
+" betweens rows
+set list " we do what to show tabs, to ensure we get them
+" out of my files
+set listchars=tab:>-,trail:- " show tabs and trailing
+set matchtime=5 " how many tenths of a second to blink
+" matching brackets for
+set nohlsearch " do not highlight searched for phrases
+set nostartofline " leave my cursor where it was
+set novisualbell " don't blink
+set number " turn on line numbers
+set numberwidth=5 " We are good up to 99999 lines
+set report=0 " tell us when anything is changed via :...
+set ruler " Always show current positions along the bottom
+set scrolloff=5 " Keep 5 lines (top/bottom) for scope
+set shortmess=aOstT " shortens messages to avoid
+" 'press a key' prompt
+set showcmd " show the command being typed
+set showmatch " show matching brackets
+set sidescrolloff=10 " Keep 5 lines at the size
+nmap , \
+
+" Text Formatting/Layout {
+"set completeopt= " don't use a pop up menu for completions
+set expandtab " no real tabs please!
+"set formatoptions=rq " Automatically insert comment leader on return,
+" and let gq format comments
+set ignorecase " case insensitive by default
+set infercase " case inferred by default
+set nowrap " do not wrap line
+set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+set smartcase " if there are caps, go case-sensitive
+set shiftwidth=2 " auto-indent amount when using cindent,
+" >>, << and stuff like that
+set softtabstop=2 " when hitting tab or backspace, how many spaces
+"should a tab be (see expandtab)
+set tabstop=2 " real tabs should be 8, and they will show with
+" set list on
+" }
+
+" Folding {
+set foldenable " Turn on folding
+set foldmarker={,} " Fold C style code (only use this as default
+" if you use a high foldlevel)
+set foldmethod=marker " Fold on the marker
+set foldlevel=100 " Don't autofold anything (but I can still
+" fold manually)
+set foldopen=block,hor,mark,percent,quickfix,tag " what movements
+" Plugin Settings {
+let b:match_ignorecase = 1 " case is stupid
+" inside strings
+
+" TagList Settings {
+let Tlist_Auto_Open=0 " let the tag list open automagically
+let Tlist_Compact_Format = 1 " show small menu
+let Tlist_Ctags_Cmd = 'tags' " location of ctags
+let Tlist_Enable_Fold_Column = 0 " do show folding tree
+let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill
+" yourself
+let Tlist_File_Fold_Auto_Close = 0 " fold closed other trees
+let Tlist_Sort_Type = "name" " order by
+let Tlist_Use_Right_Window = 1 " split to the right side
+" of the screen
+let Tlist_WinWidth = 40 " 40 cols wide, so i can (almost always)
+" read my functions
+" Language Specifics {
+" just functions and classes please
+let tlist_aspjscript_settings = 'asp;f:function;c:class'
+" just functions and subs please
+let tlist_aspvbs_settings = 'asp;f:function;s:sub'
+" don't show variables in freaking php
+let tlist_php_settings = 'php;c:class;d:constant;f:function'
+" just functions and classes please
+let tlist_vb_settings = 'asp;f:function;c:class'
+" }
+" }
+" }
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
+"}
+" ROT13 - fun
+map <F12> ggVGg?
+
+" Tab mapping {
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove
+
+"}
+" these map cntrl hjkl to window movements{
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" }
+" Autocommnds {
+" GUI Settings {
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.swp$\|\.orig$',
+  \ }
+" }" Modeline and Notes {
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+"Returns the visually selected text
+" function! BecomeEmoji()
+"   let [lnum1, col1] = getpos("'<")[1:2]
+"   let [lnum2, col2] = getpos("'>")[1:2]
+"   let lines = getline(lnum1, lnum2)
+"   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+"   let lines[0] = lines[0][col1 - 1:]
+"   let selection =  join(lines, "\n")
+"   let emoji = selection[byteidx(selection,:):byteidx(selection,:+1) -1]
+"   echom emoji
+"   return
+"   execute 'substitute/' . b:selection . '/' . emoji#for(submatch(1), submatch(0))
+" endfunction
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" vnoremap <C-e>:<c-u>BecomeEmoji()<cr>
+" :funeral_urn:
+
+" fzf for vim
+set rtp+=/usr/local/opt/fzf
+"Go stuff
+let g:go_auto_type_info = 1 " Automatically get signature/type info for object under cursor
+" save session every 5 minutes
+let g:session_autosave_periodic = 5
+let g:session_autosave = 'yes'
+let g:session_lock_enabled = 0 " I kill vim and I don't want it to complain
+let g:session_autoload = 'yes'
+let g:session_directory = '~/.vim/sessions'
+" always use the same vim session
+" let g:session_default_to_last
+" Syntastic stuff
+set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" use gf in go files
+set path=.,/usr/include,$HOME/go-code/src,$HOME/gocode/src,
+
+" Protobuf stuff
+let g:ale_linters = {
+\   'proto': ['buf-check-lint',],
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:ctrlp_working_path_mode = 'ra'
+
+" go stuff {
+  let $USE_SYSTEM_GO=1 "use system go
+  let g:go_null_module_warning=0
+  let @p = "Obegin\<Esc>jorescue => e\<cr>puts e.backtrace\<cr>binding.pry\<cr>end\<ESC>kkkk>>"
+  let @c = "ds'i:\<Esc>"
+  let @w = "iUscaRunbook::Docker::Wrapper\<Esc>"
+
+  " jj is esc
+  imap jj <Esc>
+
+  " delv tracepoints
+  nmap [od  :DlvAddBreakpoint<cr>
+  nmap ]od  :DlvRemoveBreakpoint<cr>
+  nmap [ot  :DlvAddTracepoint<cr>
+  nmap ]ot  :DlvRemoveTracepoint<cr>
+  nmap [ca  :DlvClearAll<cr>
+  nmap ]yod :DlvToggleBreakpoint<cr>
+  nmap ]yot :DlvToggleTracepoint<cr>
+  nmap [dd  :wincmd l <bar> only <bar> :DlvDebug<cr>
+  nmap [cd  :cd %:p:h<cr>
+  nmap ]p   obinding.pry <ESC>
+  nmap [r   /end<cr>Orescue => e<cr>binding.pry<esc>
+  nmap [p   @p
+  nmap [2   2gt<cr>
+  nmap [3   3gt<cr>
+  nmap [4   4gt<cr>
+  nmap [5   5gt<cr>
+  nmap [6   6gt<cr>
+  nmap [7   7gt<cr>
+  nmap ]g>  ofmt.Printf("\n***var: %+v\n", var)<esc>
+  nmap [ge  oif err != nil {<cr>fmt.Println("err: %+v ", err)<cr>}<esc>
+"}
+
+set completefunc=emoji#complete " emoji completion
+autocmd VimLeavePre * call xolox#session#auto_unlock()
+
+" nnn
+let g:nnn#layout = { 'left': '~30%' }
