@@ -19,3 +19,9 @@
 [submodule "vim/dot-vim/bundle/Vundle.vim"]
 	path = vim/dot-vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim
+[submodule "tmux/dot-tmux/plugins/tmux-themepack"]
+	path = tmux/dot-tmux/plugins/tmux-themepack
+	url = https://github.com/jimeh/tmux-themepack.git
+[submodule "tmux/dot-tmux/plugins/vim-tmux-navigator"]
+	path = tmux/dot-tmux/plugins/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
