@@ -16,3 +16,9 @@
 [submodule "tmux/plugins/tmux-fzf"]
 	path = tmux/dot-tmux/plugins/tmux-fzf
 	url = https://github.com/tmux-plugins/tmux-fzf
+[submodule "zsh/dot-oh-my-zsh"]
+	path = zsh/dot-oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "vim/dot-vim/bundle/Vundle.vim"]
+	path = vim/dot-vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
