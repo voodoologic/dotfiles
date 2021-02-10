@@ -2,6 +2,12 @@ dl(){
   docker ps -l --filter "status=running" --format "{{.Names}}"
 }
 
+mov2gif(){
+  ext="${1#*.}"
+  output_file=$(echo $1 | sed -E "s#$ext#gif#")
+  ffmpeg -i $1 -pix_fmt rgb8 -r 10 $output_file && gifsicle -O3 $output_file -o $output_file
+}
+
 usca_volume_rm(){
   docker volume ls --filter=name=uSCA | tr -s ' ' | cut -d ' ' -f 2  | xargs docker volume rm
 }
@@ -27,6 +33,8 @@ ssh_sed(){
   concatfile=/etc/ssh/ssh_config_cpe
   sed -e "s#Include\ $concatfile##" < $ssh_config
 }
+
+ptar(){ XZ_DEFAULTS="-T 0"; tar }
 
 db(){
   set -x
@@ -104,7 +112,8 @@ neat(){
 
 mov2mp4(){
   ext="${1#*.}"
-  ffmpeg -i $1 -vcodec h264 -acodec mp2  sed -e "s#$ext#mp4#"
+  output_file=$(echo $1 | sed -E "s#$ext#mp4#")
+  ffmpeg -i $1 -vcodec h264 -acodec mp2 $output_file
 }
 
 load_js_env(){

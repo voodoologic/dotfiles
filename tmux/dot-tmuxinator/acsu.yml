@@ -6,7 +6,7 @@
 ---
 name: acsu
 root: <%= @settings['project_root'] %>
-on_project_start: cd <%= @settings['project_root'] %>
+on_project_start: cd <%= @settings['project_root'] %> 
 on_project_first_start: echo 'making sure a container is build' ; usca create
 startup_window: acsu
 startup_pane: 3
