@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Go stuff
 Plugin 'sebdah/vim-delve'
 Plugin 'fatih/vim-go'
+Plugin 'pearofducks/ansible-vim'
 " Plugin 'govim/govim' an altrantive written in go
 " Other stuff
 Plugin 'mkitt/tabline.vim' " fancy tabs
@@ -59,7 +60,7 @@ filetype plugin indent on    " required
 " Solarized Colorscheme Config
 "# ------------------------------------------------------------------
 set t_Co=256
-" syntax on
+syntax on
 colorscheme solarized
 let g:solarized_termcolors=256
 " ------------------------------------------------------------------

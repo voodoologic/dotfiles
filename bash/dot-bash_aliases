@@ -15,6 +15,8 @@ alias duck='duc'
 alias stow='stow --dotfiles'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias npmo="npm --cache-min 9999999 "
+alias g2ansible="cd ~/Tools/ansible"
+alias sz='source ~/.zshrc'
 
 #work
 if [ -f $HOME/.work_aliases ]

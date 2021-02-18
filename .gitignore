@@ -21,3 +21,4 @@ vim/dot-vim/undodir/**
 vim/dot-vim/backup/**
 dotok
 tmux/plugins/*
+vim/dot-vim/bundle/**

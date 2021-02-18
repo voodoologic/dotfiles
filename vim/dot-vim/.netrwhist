@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/oldbones/Tools/ansible/tasks/brew'
+let g:netrw_dirhist_9='/Users/oldbones/runbook_projects/lib'
+let g:netrw_dirhist_8='/Users/oldbones/runbook_projects'
+let g:netrw_dirhist_7='/Users/oldbones/runbook_projects/runbooks'
+let g:netrw_dirhist_6='/Users/oldbones/runbook_projects'
+let g:netrw_dirhist_5='/Users/oldbones'
+let g:netrw_dirhist_4='/Users/oldbones/Tools'
+let g:netrw_dirhist_3='/Users/oldbones/Tools/ansible'
+let g:netrw_dirhist_2='/Users/oldbones/Tools/ansible/tasks'
+let g:netrw_dirhist_1='/Users/oldbones/Tools/ansible/tasks/brew'

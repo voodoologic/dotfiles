@@ -79,6 +79,9 @@ plugins=(
   nvm
   fzf
   globalias
+  ansible
+  direnv
+  golang
 )
 
 source $ZSH/oh-my-zsh.sh
