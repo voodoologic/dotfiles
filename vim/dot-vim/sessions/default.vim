@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/dot-vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 13 February 2021 at 23:10:49.
+" Created by session.vim 2.13.1 on 22 February 2021 at 09:50:01.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -18,7 +18,7 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/runbook_projects
+cd ~/Work/docker-hatorade/rails-hatorade
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -28,16 +28,9 @@ argglobal
 $argadd ~/Tools/ansible/tasks/brew/brew-packages.yml
 set stal=2
 tabnew
-tabnew
-tabnew
-tabnew
 tabrewind
-edit ~/.vimrc
+edit ~/Work/projector-1.2.0/Gemfile
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
@@ -45,10 +38,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
 argglobal
-setlocal fdm=marker
+setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={,}
 setlocal fdi=#
@@ -56,68 +47,24 @@ setlocal fdl=100
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 19 - ((18 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-19
-normal! 013|
-lcd ~/Tools/ansible/tasks/brew
-wincmd w
-argglobal
-if bufexists("~/Tools/ansible/tasks/brew/brew-packages.yml") | buffer ~/Tools/ansible/tasks/brew/brew-packages.yml | else | edit ~/Tools/ansible/tasks/brew/brew-packages.yml | endif
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 4 - ((3 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-4
-normal! 03|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
-tabnext
-edit ~/Tools/ansible/tasks/brew/essential.yml
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 91 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 107 + 99) / 199)
-argglobal
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 26 - ((25 * winheight(0) + 21) / 43)
+let s:l = 26 - ((8 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 26
 normal! 0
-lcd ~/Tools/ansible/tasks/brew
-wincmd w
+lcd /Volumes/Doug.Personal/Resources/Hack
+tabnext
+edit ~/Work/projector-1.2.0/app/controllers/users_controller.rb
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
 argglobal
-if bufexists("~/runbook_projects/lib/libraries_to_install.rb") | buffer ~/runbook_projects/lib/libraries_to_install.rb | else | edit ~/runbook_projects/lib/libraries_to_install.rb | endif
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={,}
@@ -128,175 +75,56 @@ setlocal fdn=20
 setlocal fen
 1
 silent! normal! zo
-17
+20
 silent! normal! zo
-114
-silent! normal! zo
-let s:l = 120 - ((25 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-120
-let s:c = 68 - ((34 * winwidth(0) + 53) / 107)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 68 . '|'
-else
-  normal! 068|
-endif
-wincmd w
-exe 'vert 1resize ' . ((&columns * 91 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 107 + 99) / 199)
-tabnext
-edit ~/Tools/ansible/tasks/brew/virtual-tools.yml
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe '2resize ' . ((&lines * 5 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
-exe '3resize ' . ((&lines * 37 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 99 + 99) / 199)
-argglobal
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 31 - ((30 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
 31
-normal! 0
-lcd ~/Tools/ansible/tasks/brew
-wincmd w
-argglobal
-if bufexists("~/Tools/ansible/tasks/brew/security.yml") | buffer ~/Tools/ansible/tasks/brew/security.yml | else | edit ~/Tools/ansible/tasks/brew/security.yml | endif
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 7 - ((4 * winheight(0) + 2) / 5)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-7
-normal! 017|
-lcd ~/Tools/ansible/tasks/brew
-wincmd w
-argglobal
-if bufexists("~/Tools/ansible/tasks/brew/ancillary.yml") | buffer ~/Tools/ansible/tasks/brew/ancillary.yml | else | edit ~/Tools/ansible/tasks/brew/ancillary.yml | endif
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-25
 silent! normal! zo
-let s:l = 24 - ((18 * winheight(0) + 18) / 37)
+50
+silent! normal! zo
+let s:l = 4 - ((3 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 0
-lcd ~/Tools/ansible/tasks/brew
-wincmd w
-3wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe '2resize ' . ((&lines * 5 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
-exe '3resize ' . ((&lines * 37 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 99 + 99) / 199)
-tabnext
-edit ~/Tools/ansible/inventory/main.yml
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 11 - ((10 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-11
-normal! 032|
-lcd ~/runbook_projects
-tabnext
-edit ~/Tools/ansible/tasks/brew/check_for_brew.yml
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={,}
-setlocal fdi=#
-setlocal fdl=100
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 6 - ((5 * winheight(0) + 21) / 43)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-6
-normal! 0
-lcd ~/Tools/ansible/tasks/brew
-tabnext 3
+4
+normal! 037|
+lcd /Volumes/Doug.Personal/Resources/Hack
+tabnext 2
 set stal=1
-badd +1 ~/runbook_projects/\[Vundle]\ Installer
-badd +5 ~/Tools/ansible/tasks/brew/brew-packages.yml
-badd +8 ~/Tools/ansible/tasks/brew/essential.yml
-badd +1 ~/Tools/ansible/tasks/brew/virtual-tools.yml
-badd +1 ~/runbook_projects
-badd +1 ~/Tools/ansible/tasks/brew/check_for_brew.yml
-badd +19 ~/.vimrc
+badd +1 ~/Work/projector-1.2.0/Gemfile
+badd +33 ~/Tools/ansible/tasks/brew/brew-packages.yml
+badd +17 ~/Work/projector-1.2.0/config/database.yml
+badd +1 ~/Tools/ansible/tasks/brew/ancillary.yml
+badd +12 ~/scripts.sh
+badd +313 ~/.vimrc
+badd +26 ~/Tools/ansible/tasks/brew/essential.yml
+badd +37 ~/Tools/ansible/tasks/brew/virtual-tools.yml
+badd +11 ~/Tools/ansible/inventory/main.yml
+badd +6 ~/Tools/ansible/tasks/brew/check_for_brew.yml
 badd +1 ~/runbook_projects/lib/libraries_to_install.rb
-badd +1 ~/Tools/ansible/tasks/brew/security.yml
-badd +8 ~/Tools/ansible/tasks/brew/ancillary.yml
-badd +1 ~/Tools/ansible/tasks/brew/\[Vundle]\ Installer
-badd +1 ~/Tools/ansible/tasks/brew
-badd +0 ~/Tools/ansible/inventory/main.yml
+badd +7 ~/Tools/ansible/tasks/brew/security.yml
+badd +1 ~/Tools/ansible/inventory
+badd +1 ~/Work/projector-1.2.0/Guardfile
+badd +1 ~/Work/projector-1.2.0/config/environments/test.rb
+badd +1 ~/
+badd +1 ~/dotfiles/tmux/dot-tmuxinator/projector.yml
+badd +7 /Volumes/Doug.Personal/Resources/Sandbox/hatorade/app/controllers/stream.js
+badd +2 ~/Work/docker-hatorade/rails-hatorade/app/models/tweet.rb
+badd +7 ~/Work/projector-1.2.0/app/models/user.rb
+badd +23 ~/Work/projector-1.2.0/spec/models/user_spec.rb
+badd +4 ~/Work/projector-1.2.0/app/models/company.rb
+badd +5 ~/Work/projector-1.2.0/app/models/project.rb
+badd +5 ~/Work/projector-1.2.0/db/migrate/20210222160308_projects_users.rb
+badd +2 ~/Work/projector-1.2.0/db/migrate/20201023122520_create_companies.rb
+badd +3 ~/Work/projector-1.2.0/db/migrate/20201023193559_create_join_table_user_company.rb
+badd +9 ~/Work/projector-1.2.0/config/routes.rb
+badd +11 ~/Work/projector-1.2.0/app/controllers/projects_controller.rb
+badd +50 ~/Work/projector-1.2.0/app/controllers/companies_controller.rb
+badd +26 ~/Work/docker-hatorade/rails-hatorade/app/models/user.rb
+badd +7 ~/Work/projector-1.2.0/db/migrate/20210222163022_add_devise_to_users.rb
+badd +3 ~/Work/projector-1.2.0/app/controllers/users_controller.rb
+badd +7 ~/Work/docker-hatorade/rails-hatorade/app/controllers/users_controller.rb
+badd +2 ~/Work/docker-hatorade/rails-hatorade/app/controllers/application_controller.rb
+badd +14 ~/Work/docker-hatorade/rails-hatorade/app/controllers/omniauth_callbacks_controller.rb
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
 "   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -313,8 +141,8 @@ let &so = s:so_save | let &siso = s:siso_save
 " Everything down here is generated by vim-session (not supported
 " by :mksession out of the box).
 
-3wincmd w
-tabnext 3
+1wincmd w
+tabnext 2
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))
 if !getbufvar(s:wipebuf, '&modified')

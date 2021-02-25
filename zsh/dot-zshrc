@@ -82,6 +82,7 @@ plugins=(
   ansible
   direnv
   golang
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh

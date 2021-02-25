@@ -8,6 +8,13 @@ mov2gif(){
   ffmpeg -i $1 -pix_fmt rgb8 -r 10 $output_file && gifsicle -O3 $output_file -o $output_file
 }
 
+be(){
+  if [ -f ".bundle/bin/$1" ]; then
+    ".bundle/bin/$@"
+  else
+    "bundle exec $@"
+  fi
+}
 usca_volume_rm(){
   docker volume ls --filter=name=uSCA | tr -s ' ' | cut -d ' ' -f 2  | xargs docker volume rm
 }
