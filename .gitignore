@@ -24,3 +24,4 @@ tmux/plugins/*
 vim/dot-vim/bundle/**
 *.swo
 *.sw*
+**/.netrwhist

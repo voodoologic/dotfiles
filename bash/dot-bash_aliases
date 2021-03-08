@@ -17,6 +17,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 alias npmo="npm --cache-min 9999999 "
 alias g2ansible="cd ~/Tools/ansible"
 alias sz='source ~/.zshrc'
+alias resources='cd ~/Resources'
 
 #work
 if [ -f $HOME/.work_aliases ]
