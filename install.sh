@@ -1,2 +1,4 @@
 #!/bin/zsh
-stow --dotfiles {git,misc,tmux,zsh}
+for $folder in [git, misc, tmux, zsh];
+  stow --dotfiles $folder
+end
