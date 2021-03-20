@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/games:/usr/sbin:$PATH
+export PATH=$HOME/.emacs.d/bin:$HOME/bin:/usr/games:/usr/sbin:$PATH
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 
