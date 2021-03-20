@@ -1,6 +1,5 @@
 #!/bin/zsh
-# for $folder in git misc tmux zsh emacs;
-for folder in emacs
+for folder in emacs git misc tmux zsh
 do
   stow --dotfiles $folder
 done
